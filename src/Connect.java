@@ -16,6 +16,11 @@ public class Connect {
 		
 		Connection connect = DriverManager.getConnection("jdbc:mysql://localhost:3306/ClassPractice?trueSSL=false&useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC", "root", "");
 		Statement statement = connect.createStatement();
+		
+		String sql = "DELETE FROM CustomersTemp " +
+                "WHERE OID = 911";
+		statement.executeUpdate(sql);
+		
 		/*
 		String sql = "INSERT INTO CustomerTemp " + "(CID, Name, Phone, Email, Password )" + " values (011, 'Jay', 3533, 'jaygallo', 'football')";
 		statement.executeUpdate(sql);
@@ -32,6 +37,8 @@ public class Connect {
 		
 		statement.executeUpdate(newtable);
 		*/
+		
+		
 		
 		
 		/*
@@ -53,7 +60,7 @@ public class Connect {
 				ps.executeBatch();
 			}
 			}
-			*/
+			
 		String sql = "INSERT INTO CustomerTemp " + "(CID, Name, Phone, Email, Password )" + " values (?, ?, ?, ?, ?)";
 		PreparedStatement ps = connect.prepareStatement(sql);
 		ps.setString(1, "4352");
@@ -65,6 +72,8 @@ public class Connect {
 		
 		int[] updateCounts = ps.executeBatch();
 		checkUpdateCounts(updateCounts);
+		
+		*/
 	}
 	  public static void checkUpdateCounts(int[] updateCounts) {
 		    for (int i=0; i<updateCounts.length; i++) {
